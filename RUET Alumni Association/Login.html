@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title>Admin And Student Login</title>  
+
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style type="text/css">
+    body{
+    background-image: url(images/csee.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    }
+    .login-box{
+        max-width: 700px;
+        float: none;
+        margin: 150px auto;
+    }
+    .admin{
+        background: rgba(211,211,211,0.5);
+        padding: 30px;  
+    }
+    .student{
+        background: #fff;
+        padding: 30px;
+    }
+</style>
+
+</head>
+<body>
+    
+<div class="container">
+    <div class="login-box">
+    <div class="row">
+        <div class="col-md-6 admin">
+            <h2>Admin LOGIN</h2>
+            <form action="adminlogin.php" method="post">
+            <div class="form-group">
+                <label>Username</label> 
+                <input type="text" name="user" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label> 
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary"> LOGIN</button>
+            </form>
+        </div>
+        <div class="col-md-6 student">
+            <h2>Student LOGIN</h2>
+            <form action="studentlogin.php" method="post">
+            <div class="form-group">
+                <label>Email</label> 
+                <input type="text" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label> 
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary"> LOGIN</button>
+            </form>
+        </div>
+
+
+    </div>  
+    </div>
+    
+    
+</div>
+  
+</body>
+</html>

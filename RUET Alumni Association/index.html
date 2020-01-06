@@ -1,0 +1,296 @@
+<?php 
+  $con = mysqli_connect('localhost','root','','studentinfo');
+  if($con-> connect_error){
+    die("Connection failed:". $con-> connect_error);
+  }
+  $result = mysqli_query($con,"SELECT tid , images , fname , lname , designation , faculty , doj FROM teachertable") ;
+  $retrive = mysqli_fetch_array($result);
+
+  $tid1 = $retrive['tid'];
+  $image = $retrive['images'];
+  $fname = $retrive['fname'];
+  $lname = $retrive['lname'];
+  $des = $retrive['designation'];
+  $fac = $retrive['faculty'];
+  $date = $retrive['doj'];
+?>
+<html>
+<head>
+   <title>RUET Alumni Association</title> 
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style type="text/css">
+        h6{
+            text-align:left;
+            color:darkblue;
+            position:relative;
+        }
+        h2{
+            color:darkred;
+            margin: inherit;
+            padding: inherit;
+        }
+        h6{
+          padding-left: 8;
+          margin: inherit;
+        }
+        h3{
+            text-align: left;
+            color: aliceblue;
+            padding-bottom: 10;
+            
+        }
+        nav ul li{
+            transform: 1s all;
+        }
+        nav ul li:hover{
+            background-color:black;
+        }
+        hr{
+          height: 3px;
+        }
+        .hello{
+          padding: 5px;
+          margin: 5px;
+        }
+        .hello h2{
+          padding-left: 0px;
+        }
+        #footer{
+          clear: both;
+          background-color: grey;
+          padding: 10px;
+          margin-left: 0px;
+
+        }
+        .tech{
+          margin: 8px;
+        }
+        .tech h3{
+          color: darkred;
+          text-align: center;
+        }
+        #content{
+            margin: 10px;
+            padding: 10px 10px;
+            background: #efefef;
+
+        }
+        #secsearch{
+          margin: 5px;
+          padding: 5px 5px;
+        }
+        .single{
+            margin: 15px;
+            margin-left: 25px;
+            
+            float: left;
+            width: 30%;
+            background-color: #fff;
+            transition: 0.5s;
+        }
+        .single:hover{
+            box-shadow: 0 2px 20px #333;
+        }
+        .single-head{
+            background-color: darkgreen;
+            display: inline;
+            float: left;
+            padding: 10px 5px;
+            text-align: center;
+            width: 100%;
+        }
+        .single-cont{
+          display: inline;
+          float: left;
+          width: 100%;
+          padding: 10px 5px;
+        }
+        .h{
+          text-align: center;
+        }
+        .sheader{
+          height: 20vh;
+          background-color: #032E09;
+          background-position: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: sans-serif; 
+        }
+        .search-field{
+          height: 50px;
+          padding: 10px;
+          border: none;
+          border-radius: 20px;
+          outline: none;
+        }
+        .one{
+          width: 400px;
+        }
+        .two{
+          width: 400px;
+        }
+        .three{
+          width: 400px;
+        }
+        .search-btn{
+          height: 50px;
+          width: 150px;
+          background : #ffeb3b ;
+          border: none;
+          color: #000 ;
+          border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+<!------header----->
+<section id="header">
+<div class="menu-bar">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#"><img src="images/ruet-logo.png"></a>
+  <h2>RUET</h2><h1>|</h1><h6>ALUMNI<br> ASSOCIATION</h6>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="aboutus.html">ABOUT US</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="events.html">EVENTS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contactus.html">CONTACT US</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://www.ruet.ac.bd/">RUET</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+<div class="banner text-center">
+    <h1>For Those Who Leave RUET<br>But For Whom RUET Never Leaves</h1>
+    <a href="Registration.html">
+        <button type="button">JOIN NOW</button>
+    </a>
+    <a href="Login.html">
+        <button type="button">LOGIN</button>
+    </a>
+</div>
+</section>
+<section>
+  <div class = "hello">
+    <h2>Hello Visitor!</h2>
+    <hr color = "black" style="width: 100%;">
+    <p>This is our new website of RUET Alumni Association. Are you one of those students who haven't joined yet? Then we want to invite you to become a member. You will be able to find information to touch your dream or you can share your career progress and valuable research with us. Feel free to join now &amp update your profile here. Stay connected and take advantage what we offer to all of our members...</p>
+  </div>
+</section>
+<section id="secsearch">
+  <div class="sheader">
+    <form action="visitsearch.php" method="post">
+      <h3 class="h">Want to SEARCH something ?</h3>
+      <div class="form-box">
+        <input type="text" name="nesd" class="search-field one" placeholder="Search by name , email , series , dept...">
+        <input type="text" name="blgrp" class="search-field two" placeholder="Search by bloodgroup...">
+        <input type="text" name="wplace" class="search-field three" placeholder="Search by workplace...">
+        <button class="search-btn" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</section>
+<section id="content">
+  <div class="tech">
+    <h3>Recently Joined Teachers</h3>
+    <div class="rowrteachers">
+      <div class="col">
+        <div class="single">
+          <div class="single-head">
+            <img src="images/<?php echo $image ?>" class="img-fluid img-thumbnail" style="width:200px; height: 300px;" >
+          </div>
+          <div class="single-cont">
+            <center><?php echo $fname ; echo " " ; echo $lname ; ?></center>
+            <center><?php echo $des ; echo " , Faculty of " ; echo $fac ; ?></center>
+            <center><?php echo "Date of Join : " ; echo $date ; ?></center>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="single">
+          <?php 
+            $con = mysqli_connect('localhost','root','','studentinfo');
+            if($con-> connect_error){
+              die("Connection failed:". $con-> connect_error);
+            }
+            $tid2 = (int)$tid1+1;
+            $result = mysqli_query($con,"SELECT tid , images , fname , lname , designation , faculty , doj FROM teachertable WHERE tid = '$tid2' ") ;
+            $retrive = mysqli_fetch_array($result);
+
+            $tid2 = $retrive['tid'];
+            $image = $retrive['images'];
+            $fname = $retrive['fname'];
+            $lname = $retrive['lname'];
+            $des = $retrive['designation'];
+            $fac = $retrive['faculty'];
+            $date = $retrive['doj'];
+          ?>
+          <div class="single-head">
+            <img src="images/<?php echo $image ?>" class="img-fluid img-thumbnail" style="width:200px; height: 300px;" >
+          </div>
+          <div class="single-cont">
+            <center><?php echo $fname ; echo " " ; echo $lname ; ?></center>
+            <center><?php echo $des ; echo " , Faculty of " ; echo $fac ; ?></center>
+            <center><?php echo "Date of Join : " ; echo $date ; ?></center>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="single">
+          <?php 
+            $con = mysqli_connect('localhost','root','','studentinfo');
+            if($con-> connect_error){
+              die("Connection failed:". $con-> connect_error);
+            }
+            $tid3 = (int)$tid2+1;
+            $result = mysqli_query($con,"SELECT tid , images , fname , lname , designation , faculty , doj FROM teachertable WHERE tid = '$tid3' ") ;
+            $retrive = mysqli_fetch_array($result);
+
+            $tid3 = $retrive['tid'];
+            $image = $retrive['images'];
+            $fname = $retrive['fname'];
+            $lname = $retrive['lname'];
+            $des = $retrive['designation'];
+            $fac = $retrive['faculty'];
+            $date = $retrive['doj'];
+          ?>
+          <div class="single-head">
+            <img src="images/<?php echo $image ?>" class="img-fluid img-thumbnail" style="width:200px; height: 300px;" >
+          </div>
+          <div class="single-cont">
+            <center><?php echo $fname ; echo " " ; echo $lname ; ?></center>
+            <center><?php echo $des ; echo " , Faculty of " ; echo $fac ; ?></center>
+            <center><?php echo "Date of Join : " ; echo $date ; ?></center>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
+</section>
+<br>
+<section>
+  <div id="footer">
+      copyright &copy; 2019 ruet
+  </div>
+</section>
+
+<!--------tr--------->
+
+
+</body>
+</html>
