@@ -1,0 +1,175 @@
+
+
+//////////////////
+
+echo $firstname."<br>".$lastname."<br>".$email."<br>".$password."<br>".$c_password."<br>".$phone.
+"<br>".$Bgrp."<br>".$series."<br>".$dept."<br>".$dateb."<br>".$dateg."<br>".$workat."<br>".$image."<br>".$checkbox ; 
+
+
+
+$firstname = ''; $lastname = ''; $email = ''; $password = ''; $c_password = ''; $phone = '';$Bgrp = '';$series = '';$dept = '';
+        $dateb = '';$dateg = '';$workat = '';$image = '';$tmp_image = '';
+
+	
+//////////////////////
+for encripted password->>>>
+
+$password = md5($password);
+
+//////
+studenthome ago------>>>>>>
+<h1>Welcome <?php echo $_SESSION['username']; ?></h1>
+
+
+/////
+try1
+==============
+
+<div class="container" style="padding-top: 10px;background-color: #fff;margin-top: 20px;margin-bottom: 20px; width: 1400px; height:670px;">
+<div class="menu-bar">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <h5 align="left">Welcome <?php echo ucfirst($firstname)." ".ucfirst($lastname) ?></h5>
+  <a href="studentlogout.php"><button class="btn btn-outline-success" style="float: right; ">Logout</button></a>
+</nav>
+</div>
+<center><img src="images/<?php echo $image ?>" class="img-fluid img-thumbnail" style="width:300px;" ></center>
+ 
+</div>
+
+
+
+****ago
+-------------->>>>>
+<div class="container" style="padding-top: 10px;background-color: #fff;margin-top: 20px;margin-bottom: 20px; width: 1400px; height:670px;">
+	<h2 align="center">Welcome <?php echo ucfirst($firstname)." ".ucfirst($lastname) ?></h2>
+	
+<a href="studentlogout.php"><button class="btn btn-outline-success" style="float: right; ">Logout</button></a><br><br>
+<center><img src="images/<?php echo $image ?>" class="img-fluid img-thumbnail" style="width:300px;" ></center>
+ 
+</div>
+
+
+
+try2
+========================
+
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+		<h1>Welcome<?php echo ucfirst($firstname)." ".ucfirst($lastname) ?></h1>
+		<a href="studentlogout.php"><button class="btn btn-outline-success" style="float: right; ">Logout</button></a>
+	</div>
+	<div id="content">
+		<div id="nav">
+			<h3>Activities</h3>
+			<ul>
+				<li>See New Event</li>
+				<li>Search</li>
+				<li>Update Your Profile</li>
+			</ul>
+		</div>
+		<div id="main">
+			<h2>name</h2>
+			<p>Profile will be fixed here.</p>
+		</div>
+	</div>
+	<div id="footer">
+		copyright &copy; 2014 ruet
+	</div>
+
+</div>
+</body>
+</html>
+
+
+/////
+css file code:
+
+#header{
+background-color:blue;
+color: while;
+}
+
+#container{
+background color: green;
+width: 80px;
+margin-left: auto;
+margin-right: auto;
+}
+
+#content{
+padding: 10px;
+}
+
+#nav{
+width: 180px;
+float: left;
+}
+
+#main{
+width: 600px;
+float: right;
+}
+
+#footer{
+clear : both;
+}
+
+
+
+==============================================
+
+
+<div class="search-info text-center">
+<h3>Are You Searching anything?</h3>
+<input type="text" class="form-control" placeholder="search keyword">   
+<input type="text" class="form-control" placeholder="Department"> 
+<input type="text" class="form-control" placeholder="Blood Group"> 
+<input type="button" class="btn btn-primary" value="Find Info"> 
+</div>  
+
+====================
+CREATE TABLE teachertable (tid int , id int , fname varchar(250), lname varchar(250) , designation varchar(250) , faculty varchar(250) , mbl_no varchar(250) , room varchar(250) , floor varchar(250) , 
+building varchar(250) , doj date , remark varchar(250));
+
+==================================
+
+CREATE TABLE studentwork (work_id int AUTO_INCREMENT , id int , position varchar(300) , comp varchar(250) , remark varchar(350) , doj DATE , facul
+ty varchar(250) , room varchar(250) , floor varchar(250) , building varchar(250) , PRIMARY KEY(work_id) , FOREIGN KEY(id) REF
+ERENCES studentsprofile(id) );
+
+else if('$Faculty' == ''){
+						<li><?php echo $pos ?></li>
+						<li><?php echo $company ?></li>
+						<li>Date of Join: <?php echo $joindate ?></li>
+						<li>Remark: <?php echo $remarks ?></li>
+					}
+
+<br>
+						Faculty of  echo $Faculty , RUET
+						<li>Contact info:</li><br>
+						<li>Room no: <?php echo $roomn ?></li>
+						<li><?php echo $floorn ?> floor, <?php echo $build ?> building.</li>
+						<li>Date of Join: <?php echo $joindate ?></li>
+						<li><?php echo $remarks ?></li>
+$msg2 = 'Faculty of';
+$msg3 = ' , RUET';
+$msg4 = 'Contact info: ';
+$msg5 = 'Room no: ';
+$msg6 = ' floor, ';
+$msg7 = ' building.';
+$msg8 = 'Date of Join: ';
+$msg9 = 'Remark: ';
+
+
+====================================
+CREATE TABLE teachertable (tid int AUTO_INCREMENT , id int , work_id int , 
+fname varchar(250) , lname varchar(250) ,designation varchar(250) , 
+faculty varchar(250) , mbl_no varchar(250) , room varchar(250) ,
+floor varchar(250) , building varchar(250) , doj date , remark varchar(250) , images text ,
+PRIMARY KEY(tid) , FOREIGN KEY(id) REFERENCES studentsprofile(id) ,
+ FOREIGN KEY(work_id) REFERENCES studentwork(work_id) ) ;
