@@ -1,0 +1,113 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.menu-bar{
+    background-color: #0006;
+}
+.nav-link
+{
+    font-size: 16px;
+    color: #fff !important ;
+    margin: 1px;
+}
+.navbar-nav
+{
+    text-align: right;
+}
+.menu-bar .navbar-toggler
+{
+    padding-right: 0;
+    outline: none;
+    border: none;
+}
+.banner
+{
+    height: 85vh;
+    animation: animate 20s ease-in-out infinite;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+@keyframes animate{
+    0%,100%{
+        background-image: url(images/volleyball.jpg);
+    }
+    25%{
+        background-image: url(images/bus.jpg);
+    }
+    50%{
+        background-image: url(images/Sminar.jpg);
+    }
+    75%{
+        background-image: url(images/Panir.Tank.jpg);
+    }
+}
+.banner h1
+{
+    padding-top: 170px;
+    font-size: 40px;
+    letter-spacing:normal;
+    font-weight: 600;
+    text-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+button{
+    background: none;
+    color:#ccc;
+    width: 240px;
+    height: 60px;
+    border: 2px solid #E5E7E9;
+    font-size: 40px;
+    border-radius: 8px;
+    transition: .6s;
+    overflow: hidden;
+}
+button:focus{
+    outline: none;
+}
+button:before{
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255,.5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5s;
+    filter: blur(60px);
+    transform: translateX(-130px) skewX(-15deg);
+}
+button:after{
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255,.2);
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(60px);
+    transform: translate(-100px) scaleX(-15deg);
+}
+button:hover{
+    background: #7F8C8D;
+    cursor: pointer;
+}
+button:hover:before{
+    transform: translateX(300px) skewX(-15deg);
+    opacity: .6;
+    transition: .7s;  
+}
+button:hover:after{
+    transform: translateX(300px) skewX(-15deg);
+    opacity: 1;
+    transition: .7s;  
+}
+
+
+/*-----------Show three teachers------------*/
