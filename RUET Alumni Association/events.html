@@ -1,0 +1,229 @@
+<?php
+
+session_start();
+include("header.php");
+include("functions.php");
+$con = mysqli_connect('localhost','root','','adminregistration');
+$result = mysqli_query($con,"SELECT eid , ename , edate , edes , image1 , image2 , image3 FROM eventstable 
+WHERE edate = (SELECT MAX(edate) FROM eventstable )");
+$retrive = mysqli_fetch_array($result);
+$ename = $retrive['ename'];
+$edate = $retrive['edate'];
+$edes = $retrive['edes'];
+$image1 = $retrive['image1'];
+$image2 = $retrive['image2'];
+$image3 = $retrive['image3'];
+?>
+<html>
+<head>
+   <title>RUET Alumni Association</title> 
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style type="text/css">
+        h6{
+            text-align:left;
+            color:darkblue;
+            position:relative;
+        }
+        h2{
+            color:darkred;
+            margin: inherit;
+            padding: inherit;
+        }
+        h6{
+          padding-left: 8;
+          margin: inherit;
+        }
+        h3{
+            text-align: left;
+            color: aliceblue;
+            padding-bottom: 10;
+            
+        }
+        nav ul li{
+            transform: 1s all;
+        }
+        nav ul li:hover{
+            background-color:black;
+        }
+        hr{
+        	height: 2px;
+        }
+        .mbox h4{
+        	margin: 5px;
+        	padding: 10px;
+        	padding-left: 0px;
+        	color: black;
+        }
+        .main{
+        	margin: 0px;
+        	margin-top: 0px;
+        	background-color: black;
+          
+        }
+        .mbox{
+            height: 550px;
+        	margin: 30px;
+        	padding: 5px;
+            padding-left: 25px;
+            background-color: lightblue;
+            transition: 0.5s;
+        }
+        .mbox:hover{
+            box-shadow: 0 2px 20px #333;
+        }
+        #secmain{
+            float:left;
+            width: 50%;
+        }
+
+        #secimage{
+            float:right;
+            width: 48%;
+        }
+        #footer{
+          clear: both;
+          background-color: grey;
+          padding: 10px;
+          margin-left: 0px;
+
+        }
+        .slide_img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        #i1 , #i2{
+            display: none;
+
+        }
+        .pre, .nxt{
+            width: 6%;
+            height: 50%;
+            position: absolute;
+            top: 0;
+            background: rgba(88,88,88,.4);
+            z-index: 99;
+            cursor: pointer;
+        }
+        .pre{
+            left: 0;
+        }
+        .nxt{
+            right: 0;
+        }
+        .nav{
+            width: 100%;
+            height: 11px;
+            bottom: 12%;
+            position: absolute;
+            text-align: center;
+            z-index: 99;
+        }
+        .dots{
+            top: -5px;
+            width: 18px;
+            height: 18px;
+            margin: 0 4px;
+            position: relative;
+            border-radius: 50%;
+            display: inline-block;
+            background: rgba(0,0,0,.6);
+        }
+        .slide_img img{
+            width: 655px;
+            height: 355px;
+        }
+        #i1:checked ~ #one,
+        #i2:checked ~ #two{
+            z-index: 9;
+        }
+
+        #i1:checked ~ .nav #dot1,
+        #i2:checked ~ .nav #dot2{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+	<!------header----->
+	<section id="header">
+	<div class="menu-bar">
+	<nav class="navbar navbar-expand-lg navbar-light">
+	  <a class="navbar-brand" href="#"><img src="images/ruet-logo.png"></a>
+	  <h2>RUET</h2><h1>|</h1><h6>ALUMNI<br> ASSOCIATION</h6>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="aboutus.html">ABOUT US</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="events.html">EVENTS</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="contactus.html">CONTACT US</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="http://www.ruet.ac.bd/">RUET</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	</div>
+	</section>
+	<section id="maincontent">
+	<div class="main">
+		<div class="mbox">
+			<div id="secmain">
+                <h4><?php echo $ename ?></h4>
+                <hr color="darkred">
+                    <li><b>Event Date : </b> <?php echo $edate ?></li>
+                    <li><b>Event Description : </b> <?php echo $edes ?></li>
+            </div>
+            <div id="secimage">
+                <h4>Event Photos</h4>
+                <hr color="darkred">
+                <div class="imgcontainer">
+                    <input type="radio" name="images" id="i1" checked>
+                    <input type="radio" name="images" id="i2">
+                    <div class="slide_img" id="one">
+                       <img src="images/<?php echo $image1 ?>" class="img-fluid img-thumbnail"  >  
+                       <label for="i2" class="pre"></label>
+                       <label for="i1" class="nxt"></label>
+                    </div>
+                    <div class="slide_img" id="two">
+                       <img src="images/<?php echo $image2 ?>" class="img-fluid img-thumbnail"  >  
+                       <label for="i1" class="pre"></label>
+                       <label for="i2" class="nxt"></label>
+                    </div>
+                    <div class="nav">
+                        <label class="dots" id="dot1" for="i1"></label>
+                        <label class="dots" id="dot2" for="i2"></label>
+                    </div>
+                </div> 
+            </div>
+            
+		</div>
+	</div>
+	</section>
+	<section>
+	  <div id="footer">
+	      copyright &copy; 2019 ruet
+	  </div>
+	</section>
+</body>
+
+
+
+
+</html>

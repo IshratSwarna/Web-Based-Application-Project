@@ -1,0 +1,164 @@
+<html>
+<head>
+   <title>RUET Alumni Association</title> 
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style type="text/css">
+        h6{
+            text-align:left;
+            color:darkblue;
+            position:relative;
+        }
+        h2{
+            color:darkred;
+            margin: inherit;
+            padding: inherit;
+        }
+        h6{
+          padding-left: 8;
+          margin: inherit;
+        }
+        h3{
+            text-align: left;
+            color: aliceblue;
+            padding-bottom: 10;
+            
+        }
+        nav ul li{
+            transform: 1s all;
+        }
+        nav ul li:hover{
+            background-color:black;
+        }
+        hr{
+        	height: 2px;
+        }
+        .mbox h2{
+        	margin: 15px;
+        	padding: 15px;
+        	padding-left: 0px;
+        	color: black;
+        }
+        .main{
+        	margin: 0px;
+        	margin-top: 0px;
+        	background-color: black;
+          
+        }
+        .mbox{
+            height: 550px;
+        	margin: 30px;
+        	padding: 5px;
+            padding-left: 25px;
+            background-color: lightblue;
+            transition: 0.5s;
+        }
+        .mbox:hover{
+            box-shadow: 0 2px 20px #333;
+        }
+        #secaddress{
+            float:left;
+            width: 30%;
+        }
+
+        #secmsg{
+            float:right;
+            width: 65%;
+        }
+        #footer{
+          clear: both;
+          background-color: grey;
+          padding: 10px;
+          margin-left: 0px;
+
+        }
+    </style>
+</head>
+<body>
+	<!------header----->
+	<section id="header">
+	<div class="menu-bar">
+	<nav class="navbar navbar-expand-lg navbar-light">
+	  <a class="navbar-brand" href="#"><img src="images/ruet-logo.png"></a>
+	  <h2>RUET</h2><h1>|</h1><h6>ALUMNI<br> ASSOCIATION</h6>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="aboutus.html">ABOUT US</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="events.html">EVENTS</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="contactus.html">CONTACT US</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="http://www.ruet.ac.bd/">RUET</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	</div>
+	</section>
+	<section id="maincontent">
+	<div class="main">
+		<div class="mbox">
+			<div id="secaddress">
+                <h2>Our Address</h2>
+                <hr color="darkred">
+                <p> Xth Floor, Yth Building,<br>Rajshahi University of Engineering &amp Technology.
+                    <br>Rajshahi - 6204.</p><br>
+                <h2>Contact here</h2>
+                <hr color="darkred">
+                <p>01875196901<br>01673678286<br>01982634981 <br>
+                Email: ruetalumni@gmail.com </p><br>
+            </div>
+            <div id="secmsg">
+                <h2>Send Message</h2>
+                <hr color="darkred">
+                <br>
+                <form action="" method="post">
+                <label>Your Name : <br><input type="text" name="name"><br></label><br>
+                <label>Your Roll : <br><input type="text" name="roll"><br></label><br>
+                <label>Your Message : <br><textarea cols="50" rows="5" name="mes"></textarea></label><br>
+                <input type="submit" name="post" value=" Post ">
+                </form>
+                <?php
+                    $name = ''; $roll = ''; $text = ''; $post = '';
+
+                    if(isset($_POST['post'])){
+                        $name = $_POST["name"];
+                        $roll = $_POST["roll"];
+                        $text = $_POST["mes"];
+                        $post = $_POST["post"];
+                        $write = fopen("mestoadmin.txt", "a+");
+                        
+                        fwrite($write, "<u><b> $name</b></u><br>$roll<br>$text<br>");
+                        fclose($write);
+
+                    }
+                ?>
+            </div>
+		</div>
+	</div>
+	</section>
+	<section>
+	  <div id="footer">
+	      copyright &copy; 2019 ruet
+	  </div>
+	</section>
+</body>
+
+
+
+
+</html>
